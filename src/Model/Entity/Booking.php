@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
 
 class Booking extends Entity
 {
-    protected array $_accessible = [
+    protected array $accessible = [
         // Modified all excluded id
         '*' => true,
         'id' => false,
