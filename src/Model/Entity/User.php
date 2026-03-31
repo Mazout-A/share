@@ -8,6 +8,14 @@ use Cake\ORM\Entity;
 
 class User extends Entity
 {
+    protected array $accessible = [
+    '*' => true,
+    'id' => false,
+    ];
+
+    protected array $hidden = [
+        'password'
+    ];
     // Code from bake.
 
     // Add this method
