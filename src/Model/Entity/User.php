@@ -16,9 +16,7 @@ class User extends Entity
     protected array $hidden = [
         'password'
     ];
-    // Code from bake.
 
-    // Add this method
     protected function _setPassword(string $password): ?string
     {
         if (mb_strlen($password) > 0) {

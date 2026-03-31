@@ -12,8 +12,7 @@ class UsersTable extends Table
 
         
         $this->hasMany('Bookings',
-        ['foreignKey' => 'user_id']
-        );
+        ['foreignKey' => 'user_id']);
 
         $this->hasMany('Reviews',
         ['foreignKey' => 'user_id']);
