@@ -10,7 +10,6 @@ class UsersTable extends Table
     {
         parent::initialize($config);
 
-        
         $this->hasMany('Bookings',
         ['foreignKey' => 'user_id']);
 
