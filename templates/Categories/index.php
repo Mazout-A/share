@@ -12,6 +12,7 @@
                 <th class="action"> Action</th>
             </tr>
         </thead>
+        
         <tbody>
             <?php foreach ($categories as $category): ?>
                 <tr>

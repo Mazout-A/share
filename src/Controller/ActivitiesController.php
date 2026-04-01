@@ -11,7 +11,9 @@ class ActivitiesController extends AppController{
 
     public function index()
     {
-        $activities = $this->Activities->find();
+        $activitie = $this->Activities->find()->contain(['Categories']);
+        $activities = $this->paginate($activitie);
+
         $this->set(compact('activities'));
     }
 
@@ -20,7 +22,7 @@ class ActivitiesController extends AppController{
         $activity = $this->Activities->get($id,[
             'contain' => ['Partners', 'Categories']]);
         
-        $this->set(compact('Categories','Partners', 'activity'));
+        $this->set(compact('activity'));
     }
 
 }
