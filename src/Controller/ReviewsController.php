@@ -14,10 +14,10 @@ class ReviewsController extends AppController
         if ($this->request->is('post')) {
             $review = $this->Reviews->patchEntity(
                 $review, $this->request->getData());
-                if ($this->Review->save($review)) {
+                if ($this->Reviews->save($review)) {
                     $this->Flash->success('Votre compte a bien etait créer');
 
-                    return $this->redirect(['action' => 'view']);
+                    return $this->redirect(['action' => 'view', $review->id]);
                 }
                 $this->Flash->error('Votre compte n\'a pas était creer');
         }

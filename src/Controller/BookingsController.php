@@ -26,7 +26,7 @@ class BookingsController extends AppController
                 if ($this->Bookings->save($booking)) {
                     $this->Flash->success('Votre réservation a bien etait prise en compte');
 
-                    return $this->redirect(['action' => 'view']);
+                    return $this->redirect(['action' => 'view', $booking->id]);
                 }
                 $this->Flash->error('Votre réservation n\'a pas etait prise en compte');
         }

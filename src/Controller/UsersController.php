@@ -17,7 +17,7 @@ class UsersController extends AppController
     // fonction index pour voir tous les users.
     public function index()
     {
-        $user = $this->User->find();
+        $user = $this->Users->find();
         $users =$this->paginate($user);
 
         $this->set(compact('users'));
@@ -66,7 +66,7 @@ class UsersController extends AppController
             {
                 $user = $this->Users->patchEntity($user,
                 $this->request->getDate());
-                if($this->User->save($user)) {
+                if($this->Users->save($user)) {
                     $this->Flash->success('Les modification sont sauvegarder');
 
                     return $this->redirect(['action' => 'view']);

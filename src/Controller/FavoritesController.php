@@ -16,7 +16,7 @@ class FavoritesController extends AppController
                 if ($this->Favorites->save($favorite)) {
                     $this->Flash->success('Votre compte a bien etait créer');
 
-                    return $this->redirect(['action' => 'view']);
+                    return $this->redirect(['action' => 'view', $favorite->id]);
                 }
                 $this->Flash->error('Votre compte n\'a pas était creer');
         }
