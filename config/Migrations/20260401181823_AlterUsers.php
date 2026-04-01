@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 use Migrations\BaseMigration;
 
-class AlterUsersTable extends BaseMigration
+class AlterUsers extends BaseMigration
 {
     /**
      * Change Method.

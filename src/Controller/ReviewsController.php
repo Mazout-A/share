@@ -10,10 +10,10 @@ class ReviewsController extends AppController
     // Fonction add pour ajouter un nouveau compte
     public function add()
     {
-        $review = $this->Reviews->newEmptiEntity();
+        $review = $this->Reviews->newEmptyEntity();
         if ($this->request->is('post')) {
             $review = $this->Reviews->patchEntity(
-                $review, $this->request->getdata());
+                $review, $this->request->getData());
                 if ($this->Review->save($review)) {
                     $this->Flash->success('Votre compte a bien etait créer');
 

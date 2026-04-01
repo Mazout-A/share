@@ -9,10 +9,10 @@ class FavoritesController extends AppController
     // Fonction add pour ajouter un nouveau compte
     public function add()
     {
-        $favorite = $this->Favorites->newEmptiEntity();
+        $favorite = $this->Favorites->newEmptyEntity();
         if ($this->request->is('post')) {
             $favorite = $this->Favorites->patchEntity(
-                $favorite, $this->request->getdata());
+                $favorite, $this->request->getData());
                 if ($this->Favorites->save($favorite)) {
                     $this->Flash->success('Votre compte a bien etait créer');
 

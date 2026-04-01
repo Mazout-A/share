@@ -19,10 +19,10 @@ class BookingsController extends AppController
     // Fonction add pour ajouter un nouveau compte
     public function add()
     {
-        $booking = $this->Bookings->newEmptiEntity();
+        $booking = $this->Bookings->newEmptyEntity();
         if ($this->request->is('post')) {
             $booking = $this->Bookings->patchEntity(
-                $booking, $this->request->getdata());
+                $booking, $this->request->getData());
                 if ($this->Bookings->save($booking)) {
                     $this->Flash->success('Votre réservation a bien etait prise en compte');
 
