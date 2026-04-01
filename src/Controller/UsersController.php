@@ -26,7 +26,9 @@ class UsersController extends AppController
     // fonction view pour voir les profil user.
     public function view($id = null)
     {
-        $user = $this->Users->get($id, contain: []);
+        $user = $this->Users->get($id, contain: [
+            'contain' => ['Catgories']
+        ]);
         $this->set(compact('user'));
     }
 
