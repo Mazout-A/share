@@ -34,16 +34,27 @@ class UsersController extends AppController
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+        if ($this->request->is('post')) {
+
+        $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated' => ['Categories']]);
+
+                if ($this->Users->save($user)) {
+                    $this->Flash->success
+                    ('Votre compte a bien etait créer');
+
+                    return $this->redirect(
+                        ['action' => 'view', $user->id]);
+                }
+                $this->Flash->error('Votre compte n\'a pas était creer');
         }
-        $this->set(compact('user'));
+
+        $category = $this->Users->Categories->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'name'
+        ])->all();
+
+        $this->set(compact('user', 'category'));
     }
 
     // fonction qui permet de modifier les données d'un compte
