@@ -50,7 +50,7 @@ class UsersController extends AppController
     // fonction qui permet de modifier les données d'un compte
     public function edit($id = null)
     {
-        $user = $this->Isers->get($id, contain: []);
+        $user = $this->Users->get($id, contain: []);
         if($this->request->is(['patch', 'post', 'put']))
             {
                 $user = $this->Users->patchEntity($user,
@@ -69,7 +69,7 @@ class UsersController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $user = $this->users->get($id);
+        $user = $this->Users->get($id);
         if ($this->Users->delete($user)){
             $this->Flash->success('Votre compte a était supprimer');
         } else{

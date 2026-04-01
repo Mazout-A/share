@@ -10,7 +10,7 @@ use Cake\ORM\Entity;
 
 class Favorite extends Entity
 {
-    protected array $_accessible = [
+    protected array $accessible = [
         // Modified all excluded id
         '*' => true,
         'id' => false,
