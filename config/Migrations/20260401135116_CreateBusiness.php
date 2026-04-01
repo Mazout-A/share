@@ -42,8 +42,8 @@ class CreateBusiness extends BaseMigration
             'null' => false,
         ]);
         $table->addColumn('price_display', 'decimal', [
-            'default' => null,
-            'limit' => 255,
+            'precision' => 10,
+            'scale' => 2,
             'null' => false,
         ]);
         $table->addColumn('accessibility', 'boolean', [
