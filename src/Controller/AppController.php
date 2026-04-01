@@ -28,6 +28,7 @@ use Cake\Controller\Controller;
  */
 class AppController extends Controller
 {
+    
     /**
      * Initialization hook method.
      *
@@ -48,5 +49,8 @@ class AppController extends Controller
          * see https://book.cakephp.org/5/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
+
+        // Add this line to check authentication result and lock your site
+        $this->loadComponent('Authentication.Authentication');
     }
 }

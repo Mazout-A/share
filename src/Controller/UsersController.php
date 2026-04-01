@@ -33,16 +33,15 @@ class UsersController extends AppController
     // Fonction add pour ajouter un nouveau compte
     public function add()
     {
-        $user = $this->Users->newEmptiEntity();
+        $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity(
-                $user, $this->request->getdata());
-                if ($this->Users->save($user)) {
-                    $this->Flash->success('Votre compte a bien etait créer');
+            $user = $this->Users->patchEntity($user, $this->request->getData());
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('The user has been saved.'));
 
-                    return $this->redirect(['action' => 'view']);
-                }
-                $this->Flash->error('Votre compte n\'a pas était creer');
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
         $this->set(compact('user'));
     }
@@ -85,8 +84,8 @@ class UsersController extends AppController
         if($result && $result->isValid())
             {
                 $target = $this->Authentication->getLoginRedirect() ?? [
-                    'controller' => 'a',
-                    'action' => 'index'
+                    'controller' => '',
+                    'action' => 'add'
                 ];
                 return $this->redirect($target);
             }

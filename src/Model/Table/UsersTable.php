@@ -1,6 +1,6 @@
 <?php
 
-namespace app\model\Table;
+namespace App\Model\Table;
 
 use cake\ORM\Table;
 
@@ -9,6 +9,12 @@ class UsersTable extends Table
     public function initialize(array $config): void
     {
         parent::initialize($config);
+
+        $this->setTable('users');
+        $this->setDisplayField('username');
+        $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp');
 
         $this->hasMany('Bookings',
         ['foreignKey' => 'user_id']);
