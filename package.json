@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Mazout-A/share/issues"
   },
-  "homepage": "https://github.com/Mazout-A/share#readme"
+  "homepage": "https://github.com/Mazout-A/share#readme",
+  "devDependencies": {
+    "tailwindcss": "^3.4.19"
+  }
 }
