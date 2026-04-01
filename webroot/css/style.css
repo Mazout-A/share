@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+    /* couleurs */
+    --bg: #061c56;
+    --text: #1f419a;
+    --accent: #eff4ff;
+    --ccent2: #ff6648;
+
+    /* text */
+    --textdark: #000000;
+    --textlight: #ffffff;
+
+    /* Typographie */
+    --typographie: "Noto Sans", sans-serif;
+
+    /* border-radius */
+
+    /* border */
+
+    /* transition */
+
+    /* gap */
+}
