@@ -151,7 +151,7 @@ public function getAuthenticationService(ServerRequestInterface $request): Authe
     ]);
 
     $fields = [
-        PasswordIdentifier::CREDENTIAL_USERNAME => 'username',
+        PasswordIdentifier::CREDENTIAL_USERNAME => 'email',
         PasswordIdentifier::CREDENTIAL_PASSWORD => 'password',
     ];
 

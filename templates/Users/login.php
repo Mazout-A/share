@@ -10,7 +10,7 @@
 
         <legend><?= __('entre ton username et ton password') ?></legend>
 
-        <?= $this->Form->control('username', ['required' => true]) ?>
+        <?= $this->Form->control('email', ['required' => true]) ?>
 
         <?= $this->Form->control('password', ['required' => true]) ?>
     </fieldset>

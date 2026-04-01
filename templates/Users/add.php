@@ -55,7 +55,7 @@
 
         <h3>Etape 3: Centre d'interet</h3>
 
-            <?= $this->Form->control('categories._id',[
+            <?= $this->Form->control('categories._ids',[
                 'type' => 'select',
                 'multiple' => 'checkbox',
                 'options' => $categories,

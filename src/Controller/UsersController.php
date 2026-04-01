@@ -26,8 +26,8 @@ class UsersController extends AppController
     // fonction view pour voir les profil user.
     public function view($id = null)
     {
-        $user = $this->Users->get($id, contain: [
-            'contain' => ['Catgories']
+        $user = $this->Users->get($id, [
+            'contain' => ['Categories']
         ]);
         $this->set(compact('user'));
     }
@@ -66,8 +66,7 @@ class UsersController extends AppController
         $user = $this->Users->get($id, contain: []);
         if($this->request->is(['patch', 'post', 'put']))
             {
-                $user = $this->Users->patchEntity($user,
-                $this->request->getDate());
+                $user = $this->Users->patchEntity($user, $this->request->getData());
                 if($this->Users->save($user)) {
                     $this->Flash->success('Les modification sont sauvegarder');
 
