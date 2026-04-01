@@ -54,11 +54,6 @@ class CreateBusiness extends BaseMigration
             'default' => null,
             'null' => false,
         ]);
-        $table->addColumn('price_display', 'decimal', [
-            'default' => null,
-            'limit' => 255,
-            'null' => false,
-        ]);
         $table->addColumn('category_id', 'integer', [
             'default' => null,
             'limit' => 11,
