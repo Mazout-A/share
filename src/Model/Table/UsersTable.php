@@ -31,5 +31,8 @@ class UsersTable extends Table
         $this->hasMany('Gamifications',
         ['foreignKey' => 'user_id']);
 
+        $this->belongsToMany('Categories',
+        ['through' => 'userInterests']);
+
     }
 }

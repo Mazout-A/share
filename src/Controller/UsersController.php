@@ -43,8 +43,9 @@ class UsersController extends AppController
                     $this->Flash->success
                     ('Votre compte a bien etait créer');
 
-                    return $this->redirect(
-                        ['action' => 'view', $user->id]);
+                    return $this->redirect
+                    (['action' => 'view', $user->id]);
+                    
                 }
                 $this->Flash->error('Votre compte n\'a pas était creer');
         }
