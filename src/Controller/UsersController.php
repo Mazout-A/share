@@ -45,17 +45,17 @@ class UsersController extends AppController
 
                     return $this->redirect
                     (['action' => 'view', $user->id]);
-                    
+
                 }
                 $this->Flash->error('Votre compte n\'a pas était creer');
         }
 
-        $category = $this->Users->Categories->find('list', [
+        $categories = $this->Users->Categories->find('list', [
             'keyField' => 'id',
             'valueField' => 'name'
         ])->all();
 
-        $this->set(compact('user', 'category'));
+        $this->set(compact('user', 'categories'));
     }
 
     // fonction qui permet de modifier les données d'un compte
