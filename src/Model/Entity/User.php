@@ -20,6 +20,8 @@ class User extends Entity
     protected array $accessible = [
         '*' => true,
         'id' => false,
+        'name' => true,
+        'surname' => true,
     ];
  
     /**

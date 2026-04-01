@@ -63,14 +63,16 @@ class UsersController extends AppController
     // fonction qui permet de modifier les données d'un compte
     public function edit($id = null)
     {
-        $user = $this->Users->get($id, contain: []);
+
+        $user = $this->Users->get($id);
+
         if($this->request->is(['patch', 'post', 'put']))
             {
                 $user = $this->Users->patchEntity($user, $this->request->getData());
                 if($this->Users->save($user)) {
                     $this->Flash->success('Les modification sont sauvegarder');
 
-                    return $this->redirect(['action' => 'view']);
+                    return $this->redirect(['action' => 'view', $user->id]);
                 }
                 $this->Flash->error('Les modification n\'ont etait pris en compte');
             }
