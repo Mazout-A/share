@@ -15,7 +15,10 @@
         </tr>
         <tr>
             <th>Date de réservation</th>
-            <td><?= h($booking->booking_date) ?></td>
+            <td>
+            <?= $booking->hasValue('reservation_date')
+            ? $booking->reservation_date->i18nFormat('dd/MM/yyyy à HH:mm') : 'Non définie' ?>
+            </td>
         </tr>
         <tr>
             <th>Statut</th>

@@ -9,12 +9,12 @@
             'empty' => 'selectionne une option' 
         ]) ?>
 
-        <?= $this->Form->control('tickets_count', [
-            'type' => 'number',
-            'label' => 'nombre de place',
-            'value' => '1',
-            'min' => '1'
-        ]) ?>
+        <?= $this->Form->control(
+            'reservation_date', [
+            'label' =>'Date de reservation',
+            'type' => 'datetime-local'
+            ]
+        ) ?>
     </fieldset>
 
     <?= $this->Form->button('confirme') ?>

@@ -15,7 +15,7 @@ class BookingsController extends AppController
         $booking = $this->Bookings->find()
             ->where(['user_id' => $userId])
             ->contain(['Activities']);
-            
+
         $bookings = $this->paginate($booking);
 
         $this->set(compact('bookings'));
@@ -42,6 +42,7 @@ class BookingsController extends AppController
         $booking = $this->Bookings->newEmptyEntity();
 
         if ($this->request->is('post')) {
+
             $booking = $this->Bookings->patchEntity(
                 $booking, $this->request->getData());
 
