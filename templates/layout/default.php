@@ -30,6 +30,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->meta('icon') ?>
 
     <?= $this->Html->css(['style']) ?>
+    <?= $this->Html->css(['iou']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
