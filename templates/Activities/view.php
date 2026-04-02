@@ -5,7 +5,7 @@
         <p><strong>Description :</strong> <?= h($activity->description) ?></p>
         <p><strong>Adresse :</strong> <?= h($activity->address) ?></p>
         <p><strong>Prix :</strong> <?= $activity->price == 0 ? 'Gratuit' : $this->Number->currency($activity->price, 'EUR') ?></p>
-        
+
         <p><strong>Type :</strong> <?= h($activity->participant_type) ?></p>
         <p><strong>En intérieur :</strong> <?= $activity->is_indoor ? 'Oui' : 'Non' ?></p>
         <p><strong>Accès PMR :</strong> <?= $activity->is_accessible ? 'Oui' : 'Non' ?></p>
@@ -24,11 +24,19 @@
 
     <div class="actions">
         <!-- Bouton Favoris -->
-        <?= $this->Form->postLink(
-            '<i class="fa fa-heart"></i> Ajouter aux favoris',
-            ['controller' => 'Favorites', 'action' => 'add', $activity->id],
-            ['escape' => false, 'class' => 'button', 'title' => 'Ajouter à mes favoris']
-        ) ?>
+        <?php if (isset($isFavorite) && $isFavorite): ?>
+            <?= $this->Form->postLink(
+                '<i class="fa fa-heart" style="color: red;"></i> Retirer des favoris',
+                ['controller' => 'Favorites', 'action' => 'delete', $favoriteId],
+                ['escape' => false, 'class' => 'button', 'title' => 'Retirer de mes favoris']
+            ) ?>
+        <?php else: ?>
+            <?= $this->Form->postLink(
+                '<i class="fa fa-heart"></i> Ajouter aux favoris',
+                ['controller' => 'Favorites', 'action' => 'add', $activity->id],
+                ['escape' => false, 'class' => 'button', 'title' => 'Ajouter à mes favoris']
+            ) ?>
+        <?php endif; ?>
 
         <br><br>
 
