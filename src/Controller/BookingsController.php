@@ -16,14 +16,6 @@ class BookingsController extends AppController
         $this->set(compact('bookings'));
     }
 
-<<<<<<< HEAD
-    public function view($id=null){
-    
-        $booking = $this->Bookings->get( $id, [
-            'containe' => ['Users', 'Activities'],
-        ]);
-
-=======
     public function view($id = null)
     {
         $userId = $this->Authentication->getIdentity()->getIdentifier();
@@ -35,7 +27,6 @@ class BookingsController extends AppController
 
             return $this->redirect(['action' => 'index']);
         }
->>>>>>> d02effc5e8072b91d762f7ff657e964e94f1fe2b
         $this->set(compact('booking'));
     }
 
@@ -48,6 +39,10 @@ class BookingsController extends AppController
         if ($this->request->is('post')) {
             $booking = $this->Bookings->patchEntity(
                 $booking, $this->request->getData());
+
+                $booking->user_id = $this->Authentication->getIdentity()->getIdentifier();
+                $booking ->status = 'confirmer';
+
                 if ($this->Bookings->save($booking)) {
                     $this->Flash->success('Votre réservation a bien etait prise en compte');
 
