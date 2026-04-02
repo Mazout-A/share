@@ -1,7 +1,7 @@
 <div class="favorites index content">
     <h2>Mes Activités Favorites</h2>
 
-    <?php if (!$favorites->isEmpty()): ?>
+    <?php if (!$favorites->items()->isEmpty()): ?>
         <div class="table">
             <table>
                 <thead>

@@ -42,29 +42,57 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 
 <body>
-    <nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
-        </div>
-        <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
 
-            <?php $identity = $this->request->getAttribute('identity'); ?>
-            <?php if ($identity): ?>
-                <?= $this->Html->link('Mon Profil', ['controller' => 'Users', 'action' => 'view', $identity->getIdentifier()], ['class' => 'button']) ?>
-                <?= $this->Html->link('Mes Favoris', ['controller' => 'Favorites', 'action' => 'index'], ['class' => 'button']) ?>
-            <?php endif; ?>
-        </div>
-    </nav>
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
     </main>
-    <footer>
-    </footer>
+
+    <nav class="navbar">
+
+        <?= $this->Html->image('home.svg', [
+            'alt' => 'homepage', 
+            'width' => '22', 
+            'height' => '22', 
+            'url' => [
+            'controller' => 'activities', 
+            'action' => 'index']]) ?>
+
+        <?= $this->Html->image('loupe.svg', [
+            'alt' => 'homepage', 
+            'width' => '22',             
+            'height' => '22', 
+            'url' => [
+            'controller' => 'categories', 
+            'action' => 'index']]) ?>
+
+        <?= $this->Html->image('chat.svg', [
+            'alt' => 'homepage', 
+            'width' => '22', 
+            'height' => '22', 
+            'url' => [
+            'controller' => '', 
+            'action' => '']]) ?>
+
+        <?= $this->Html->image('fav.svg', [
+            'alt' => 'homepage', 
+            'width' => '22', 
+            'height' => '22', 
+            'url' => [
+            'controller' => 'favorites', 
+            'action' => 'index']]) ?>
+
+        <?= $this->Html->image('user.svg', [
+            'alt' => 'homepage', 
+            'width' => '22', 
+            'height' => '22', 
+            'url' => [
+            'controller' => 'users', 
+            'action' => 'view']]) ?>
+
+    </nav>
 </body>
 
 </html>
