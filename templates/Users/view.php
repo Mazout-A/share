@@ -17,23 +17,23 @@
 
     <div class="interet">
         <h3>Centre d'interets</h3>
-        <?php if(!empty($user->categories)): ?>
-                <ul>
-                    <?php foreach ($user->categories as $category): ?>
-                        <li><?= h($category->name) ?></li>
-                    <?php endforeach; ?>
-                </ul>
-                <?php else: ?>
-                    <p>Aucun centre d'intérêt sélectionné</p>
-            <?php endif; ?>
+        <?php if (!empty($user->categories)): ?>
+            <ul>
+                <?php foreach ($user->categories as $category): ?>
+                    <li><?= h($category->name) ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>Aucun centre d'intérêt sélectionné</p>
+        <?php endif; ?>
     </div>
     <div class="favorites">
         <h3>Mes Activités Favorites</h3>
-        <?php if(!empty($user->favorites)): ?>
+        <?php if (!empty($user->favorites)): ?>
             <ul>
                 <?php foreach ($user->favorites as $favorite): ?>
                     <li>
-                        <?= h($favorite->activity->name) ?>
+                        <?= h($favorite->activity->title ?? $favorite->activity->name) ?>
                         <div class="fav-actions">
                             <?= $this->Html->link('Voir', ['controller' => 'Activities', 'action' => 'view', $favorite->activity->id], ['class' => 'view-link']) ?>
                             |
@@ -48,10 +48,10 @@
     </div>
 
     <div class="action_profil">
-        <?= $this->Html->link('Modifier',['action' => 'edit', $user->id], ['class' => 'button']) ?>
+        <?= $this->Html->link('Modifier', ['action' => 'edit', $user->id], ['class' => 'button']) ?>
     </div>
     <div class="user-actions">
-        <?php $identity = $this->request->getAttribute('identity');?>
+        <?php $identity = $this->request->getAttribute('identity'); ?>
         <?php if ($identity): ?>
             <?= $this->Html->link('Se déconnecter', ['controller' => 'Users', 'action' => 'logout'], ['class' => 'button button-outline']) ?>
         <?php else: ?>
