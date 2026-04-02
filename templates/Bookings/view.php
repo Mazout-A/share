@@ -11,7 +11,7 @@
         <tr>
             <th>Activité réservée</th>
             <!-- On affiche le nom de l'activité avec un lien -->
-            <td><?= $booking->has('activity') ? $this->Html->link($booking->activity->name, ['controller' => 'Activities', 'action' => 'view', $booking->activity->id]) : '' ?></td>
+            <td><?= $booking->has('activity') ? $this->Html->link($booking->activity->title, ['controller' => 'Activities', 'action' => 'view', $booking->activity->id]) : '' ?></td>
         </tr>
         <tr>
             <th>Date de réservation</th>

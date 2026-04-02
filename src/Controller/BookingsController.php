@@ -10,8 +10,13 @@ class BookingsController extends AppController
     // fonction index pour voir tous les users.
     public function index()
     {
-        $booking = $this->Bookings->find();
-        $bookings =$this->paginate($booking);
+    $userId = $this->Authentication->getIdentity()->getIdentifier();
+
+        $booking = $this->Bookings->find()
+            ->where(['user_id' => $userId])
+            ->contain(['Activities']);
+            
+        $bookings = $this->paginate($booking);
 
         $this->set(compact('bookings'));
     }
