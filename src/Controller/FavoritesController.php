@@ -7,34 +7,39 @@ use Cake\Event\EventInterface;
 class FavoritesController extends AppController
 {
     // Fonction index
-    public function index(){
+    public function index()
+    {
+        $userId = $this->Authentication->getIdentityData('id');
 
-        $this->paginate = ['contain'=> ['Users', 'Activities'],];
-        $favorites = $this->paginate($this->Favorites);
+        $query = $this->Favorites->find()
+            ->where(['user_id' => $userId])
+            ->contain(['Activities']);
+
+        $favorites = $this->paginate($query);
 
         $this->set(compact('favorites'));
     }
 
     // Fonction add en fav
     public function add($activityId = null)
-{
-    $this->request->allowMethod(['post', 'put']);
-    
-    $favorite = $this->Favorites->newEmptyEntity();
-    $favorite->user_id = $this->Authentication->getIdentityData('id');
-    $favorite->activity_id = $activityId;
+    {
+        $this->request->allowMethod(['post', 'put']);
 
-    // Optionnel : Vérifier si le favori existe déjà pour éviter les doublons
-    $exists = $this->Favorites->exists(['user_id' => $favorite->user_id, 'activity_id' => $activityId]);
+        $favorite = $this->Favorites->newEmptyEntity();
+        $favorite->user_id = $this->Authentication->getIdentityData('id');
+        $favorite->activity_id = $activityId;
 
-    if (!$exists && $this->Favorites->save($favorite)) {
-        $this->Flash->success(__('Activité ajoutée aux favoris.'));
-    } else {
-        $this->Flash->error(__('Déjà en favoris ou erreur lors de l\'ajout.'));
+        // Optionnel : Vérifier si le favori existe déjà pour éviter les doublons
+        $exists = $this->Favorites->exists(['user_id' => $favorite->user_id, 'activity_id' => $activityId]);
+
+        if (!$exists && $this->Favorites->save($favorite)) {
+            $this->Flash->success(__('Activité ajoutée aux favoris.'));
+        } else {
+            $this->Flash->error(__('Déjà en favoris ou erreur lors de l\'ajout.'));
+        }
+
+        return $this->redirect($this->referer());
     }
-
-    return $this->redirect($this->referer());
-}
     // Supprimer un favori
     public function delete($id = null)
     {
@@ -45,6 +50,4 @@ class FavoritesController extends AppController
         }
         return $this->redirect($this->referer());
     }
-
 }
-
