@@ -52,6 +52,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?php $identity = $this->request->getAttribute('identity'); ?>
             <?php if ($identity): ?>
                 <?= $this->Html->link('Mon Profil', ['controller' => 'Users', 'action' => 'view', $identity->getIdentifier()], ['class' => 'button']) ?>
+                <?= $this->Html->link('Mes Favoris', ['controller' => 'Favorites', 'action' => 'index'], ['class' => 'button']) ?>
             <?php endif; ?>
         </div>
     </nav>
