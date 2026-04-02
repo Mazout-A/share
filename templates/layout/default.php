@@ -29,7 +29,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
+    <?= $this->Html->css(['style']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
