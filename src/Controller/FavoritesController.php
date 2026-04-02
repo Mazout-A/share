@@ -6,34 +6,44 @@ use Cake\Event\EventInterface;
 
 class FavoritesController extends AppController
 {
-    // Fonction add pour ajouter un nouveau compte
-    public function add()
-    {
-        $favorite = $this->Favorites->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $favorite = $this->Favorites->patchEntity(
-                $favorite, $this->request->getData());
-                if ($this->Favorites->save($favorite)) {
-                    $this->Flash->success('Votre compte a bien etait créer');
+    // Fonction index
+    public function index(){
 
-                    return $this->redirect(['action' => 'view', $favorite->id]);
-                }
-                $this->Flash->error('Votre compte n\'a pas était creer');
-        }
-        $this->set(compact('favorite'));
+        $this->paginate = ['contain'=> ['Users', 'Activities'],];
+        $favorites = $this->paginate($this->Favorites);
+
+        $this->set(compact('favorites'));
     }
 
-    // fonction qui permet de delete un compte
+    // Fonction add en fav
+    public function add($activityId = null)
+{
+    $this->request->allowMethod(['post', 'put']);
+    
+    $favorite = $this->Favorites->newEmptyEntity();
+    $favorite->user_id = $this->Authentication->getIdentityData('id');
+    $favorite->activity_id = $activityId;
+
+    // Optionnel : Vérifier si le favori existe déjà pour éviter les doublons
+    $exists = $this->Favorites->exists(['user_id' => $favorite->user_id, 'activity_id' => $activityId]);
+
+    if (!$exists && $this->Favorites->save($favorite)) {
+        $this->Flash->success(__('Activité ajoutée aux favoris.'));
+    } else {
+        $this->Flash->error(__('Déjà en favoris ou erreur lors de l\'ajout.'));
+    }
+
+    return $this->redirect($this->referer());
+}
+    // Supprimer un favori
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $favorite = $this->Favorites->get($id);
-        if ($this->Favorites->delete($favorite)){
-            $this->Flash->success('Votre compte a était supprimer');
-        } else{
-            $this->Flash->error('Votre compte n\'pas pu etre supprimé');
+        if ($this->Favorites->delete($favorite)) {
+            $this->Flash->success(__('Le favori a été supprimé.'));
         }
-        return $this->redirect(['action' => 'add']);
+        return $this->redirect($this->referer());
     }
 
 }

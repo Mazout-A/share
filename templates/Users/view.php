@@ -27,6 +27,25 @@
                     <p>Aucun centre d'intérêt sélectionné</p>
             <?php endif; ?>
     </div>
+    <div class="favorites">
+        <h3>Mes Activités Favorites</h3>
+        <?php if(!empty($user->favorites)): ?>
+            <ul>
+                <?php foreach ($user->favorites as $favorite): ?>
+                    <li>
+                        <?= h($favorite->activity->name) ?>
+                        <div class="fav-actions">
+                            <?= $this->Html->link('Voir', ['controller' => 'Activities', 'action' => 'view', $favorite->activity->id], ['class' => 'view-link']) ?>
+                            |
+                            <?= $this->Form->postLink('Retirer', ['controller' => 'Favorites', 'action' => 'delete', $favorite->id], ['confirm' => 'Enlever des favoris ?', 'class' => 'delete-link']) ?>
+                        </div>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+        <?php else: ?>
+            <p>Aucune activité en favoris</p>
+        <?php endif; ?>
+    </div>
 
     <div class="action_profil">
         <?= $this->Html->link('Modifier',['action' => 'edit', $user->id], ['class' => 'button']) ?>

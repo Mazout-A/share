@@ -4,24 +4,21 @@
  *Controller/ActivitiesController.php
 */
 
-
 namespace App\Controller;
 
 class ActivitiesController extends AppController{
 
-    public function index()
+        public function index()
     {
-        $activitie = $this->Activities->find()->contain(['Categories']);
-        $activities = $this->paginate($activitie);
-
+        $activities = $this->paginate($this->Activities->find());
         $this->set(compact('activities'));
     }
 
-    public function view ($id = null)
+        public function view($id = null)
     {
-        $activity = $this->Activities->get($id,[
-            'contain' => ['Partners', 'Categories']]);
-        
+        // On cherche l'ID 1 de la manière la plus simple possible
+        $activity = $this->Activities->get($id);
+
         $this->set(compact('activity'));
     }
 

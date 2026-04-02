@@ -16,6 +16,15 @@ class BookingsController extends AppController
         $this->set(compact('bookings'));
     }
 
+    public function view($id=null){
+    
+        $booking = $this->Bookings->get( $id, [
+            'containe' => ['Users', 'Activities'],
+        ]);
+
+        $this->set(compact('booking'));
+    }
+
     // Fonction add pour ajouter un nouveau compte
     public function add()
     {

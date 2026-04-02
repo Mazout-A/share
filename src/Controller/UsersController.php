@@ -27,7 +27,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Categories']
+            'contain' => ['Categories','Favorites.Activities']
         ]);
         $this->set(compact('user'));
     }
@@ -99,8 +99,8 @@ class UsersController extends AppController
         if($result && $result->isValid())
             {
                 $target = $this->Authentication->getLoginRedirect() ?? [
-                    'controller' => '',
-                    'action' => 'add'
+                    'controller' => 'Activities',
+                    'action' => 'index'
                 ];
                 return $this->redirect($target);
             }
