@@ -11,7 +11,7 @@ class ActivitiesTable extends Table
         parent::initialize($config);
 
         $this->setTable('activities');
-        $this->setDisplayField('name');
+        $this->setDisplayField('title');
         $this->setPrimaryKey('id');
 
         $this->belongsTo('Categories', [

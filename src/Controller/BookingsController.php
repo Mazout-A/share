@@ -46,7 +46,10 @@ class BookingsController extends AppController
                 }
                 $this->Flash->error('Votre réservation n\'a pas etait prise en compte');
         }
-        $activities = $this->Bookings->Activities->find('list')->all();
+        $activities = $this->Bookings->Activities->find('list',[
+            'keyField' => 'id',
+            'valuesField' => 'title'
+        ])->all();
         $this->set(compact('booking', 'activities'));
     }
 
