@@ -28,7 +28,7 @@ class UsersController extends AppController
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
-            'contain' => ['Categories', 'Favorites.Activities']
+            'contain' => ['Categories']
         ]);
         $this->set(compact('user'));
     }
