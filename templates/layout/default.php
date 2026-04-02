@@ -52,10 +52,6 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <?php $identity = $this->request->getAttribute('identity'); ?>
             <?php if ($identity): ?>
                 <?= $this->Html->link('Mon Profil', ['controller' => 'Users', 'action' => 'view', $identity->getIdentifier()], ['class' => 'button']) ?>
-                <?= $this->Html->link('Se déconnecter', ['controller' => 'Users', 'action' => 'logout'], ['class' => 'button button-outline']) ?>
-            <?php else: ?>
-                <?= $this->Html->link('Se connecter', ['controller' => 'Users', 'action' => 'login'], ['class' => 'button']) ?>
-                <?= $this->Html->link('S\'inscrire', ['controller' => 'Users', 'action' => 'add'], ['class' => 'button button-outline']) ?>
             <?php endif; ?>
         </div>
     </nav>

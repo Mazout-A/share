@@ -50,5 +50,13 @@
     <div class="action_profil">
         <?= $this->Html->link('Modifier',['action' => 'edit', $user->id], ['class' => 'button']) ?>
     </div>
-
+    <div class="user-actions">
+        <?php $identity = $this->request->getAttribute('identity');?>
+        <?php if ($identity): ?>
+            <?= $this->Html->link('Se déconnecter', ['controller' => 'Users', 'action' => 'logout'], ['class' => 'button button-outline']) ?>
+        <?php else: ?>
+            <?= $this->Html->link('Se connecter', ['controller' => 'Users', 'action' => 'login'], ['class' => 'button']) ?>
+            <?= $this->Html->link('S\'inscrire', ['controller' => 'Users', 'action' => 'add'], ['class' => 'button button-outline']) ?>
+        <?php endif; ?>
+    </div>
 </div>
