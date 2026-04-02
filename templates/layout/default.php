@@ -1,4 +1,5 @@
 <?php
+
 /**
  * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
  * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
@@ -18,6 +19,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
 <html>
+
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,8 +37,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    
+
 </head>
+
 <body>
     <nav class="top-nav">
         <div class="top-nav-title">
@@ -45,6 +48,15 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-nav-links">
             <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>
             <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+
+            <?php $identity = $this->request->getAttribute('identity'); ?>
+            <?php if ($identity): ?>
+                <?= $this->Html->link('Mon Profil', ['controller' => 'Users', 'action' => 'view', $identity->getIdentifier()], ['class' => 'button']) ?>
+                <?= $this->Html->link('Se déconnecter', ['controller' => 'Users', 'action' => 'logout'], ['class' => 'button button-outline']) ?>
+            <?php else: ?>
+                <?= $this->Html->link('Se connecter', ['controller' => 'Users', 'action' => 'login'], ['class' => 'button']) ?>
+                <?= $this->Html->link('S\'inscrire', ['controller' => 'Users', 'action' => 'add'], ['class' => 'button button-outline']) ?>
+            <?php endif; ?>
         </div>
     </nav>
     <main class="main">
@@ -56,4 +68,5 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <footer>
     </footer>
 </body>
+
 </html>
