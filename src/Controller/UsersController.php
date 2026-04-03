@@ -43,7 +43,7 @@ class UsersController extends AppController
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
-            $characters = $this->Movies->Characters->find('list')->order('name');
+            $categories = $this->Users->Categories->find('list')->orderBy('name');
         if ($this->request->is('post')) {
 
             $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated' => ['Categories']]);
@@ -57,7 +57,7 @@ class UsersController extends AppController
         }
 
 
-        $this->set(compact('user'));
+        $this->set(compact('user', 'categories'));
     }
 
     // fonction qui permet de modifier les données d'un compte
