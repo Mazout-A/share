@@ -600,3 +600,124 @@ body {
     font-weight: bold;
     cursor: pointer;
 }
+
+/* -------------------favoris----------------- */
+
+
+/* --- Header & Subtitle --- */
+.favorites-view .top-nav {
+    background-color: var(--nav);
+    padding: 20px;
+    text-align: left;
+}
+
+.nav-title {
+    color: var(--textlight);
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.section-subtitle {
+    color: var(--nav);
+    font-size: 1.4rem;
+    margin: 20px 0;
+    font-weight: 700;
+}
+
+/* --- Filtres (Pastilles) --- */
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: var(--bg);
+}
+
+/* On cache les boutons radio */
+.filter-bar input[type="radio"] {
+    display: none;
+}
+
+/* Style des labels (les pastilles) */
+.filter-bar label {
+    padding: 6px 15px;
+    border-radius: var(--radius-max);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--nav);
+    color: var(--nav);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+/* Style quand une pastille est "cochée" */
+.filter-bar input[type="radio"]:checked + label {
+    background-color: var(--nav);
+    color: var(--textlight);
+}
+
+/* --- Grille de cartes --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes comme sur la maquette */
+    gap: 20px;
+}
+
+.grid-card {
+    position: relative;
+}
+
+.card-link {
+    text-decoration: none;
+    color: var(--textdark);
+    display: block;
+}
+
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #eee;
+    border-radius: var(--radius);
+    background-image: linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd), 
+                      linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd);
+    background-size: 20px 20px;
+    margin-bottom: 8px;
+}
+
+.info-grid h3 {
+    font-size: 0.95rem;
+    margin: 5px 0;
+    text-align: center;
+    color: var(--textdark);
+}
+
+.info-grid p {
+    font-size: 0.8rem;
+    text-align: center;
+    color: #666;
+    margin: 0;
+}
+
+/* Optionnel : Petit bouton de suppression en haut à droite de la carte */
+.remove-fav {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--textURL);
+    font-size: 0.7rem;
+    text-decoration: none;
+}
+
+.empty-msg {
+    text-align: center;
+    padding: 40px;
+    color: var(--nav);
+    opacity: 0.6;
+}
