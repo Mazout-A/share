@@ -57,10 +57,10 @@ class UsersController extends AppController
             $this->Flash->error('Votre compte n\'a pas était creer');
         }
 
-        $categories = $this->Users->Categories->find('list', [
-            'keyField' => 'id',
-            'valueField' => 'name'
-        ])->all();
+        $categories = $this->Users->Categories->find('list', 
+            keyField: 'id', 
+            valueField: 'name'
+        )->all();
 
         $this->set(compact('user', 'categories'));
     }

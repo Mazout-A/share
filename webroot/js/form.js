@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             family.style.display = "none";
             if (inputF) {
-                inputFamille.value = "";
+                inputF.value = "";
             }
         }
     });

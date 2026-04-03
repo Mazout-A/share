@@ -1,75 +1,106 @@
-<div class="onboarding_container">
+<section class="add">
 
-    <h2>Création du compte</h2>
+    <h2>Création de votre compte</h2>
 
     <?= $this->Form->create($user) ?>
 
-    <div id="etape_1" class="form">
+    <section class="carte-add">
 
-        <h3>étape 1 : qui etes-vous ?</h3>
+    <section class="form" id="etape_1">
+        <h3>étape 1 : qui etes-vous</h3>
+    <label class="label">Prénom</label>
+        <?= $this->Form->control('name', [
+            'label' => false, 
+            'required' => true, 
+            'class' => 'input',
+            'placeholder' => 'Prénom']) ?>
 
-            <?= $this->Form->control('name', ['label' => 'Prénom', 'required' => true]) ?>
-            <?= $this->Form->control('surname', ['label' => 'Nom', 'required' => true]) ?>
-            <?= $this->Form->control('email', ['label' => 'Email', 'required' => true]) ?>
-            <?= $this->Form->control('password', ['label' => 'Mot de passe', 'required' => true]) ?>
-            <?= $this->Form->control('age', ['label' => 'Âge', 'type' => 'number']) ?>
 
-        <button class="btn_next" onclick="etape2()" type="button">-></button>
+    <label class="label">Nom de famille</label>
+        <?= $this->Form->control('surname', [
+            'label' => false, 
+            'required' => true, 
+            'class' => 'input',
+            'placeholder' => 'Nom de famille']) ?>
 
-    </div>
 
-    <div class="form etape" id="etape_2" style="display: none;">
+    <label class="label">E-mail</label>
+        <?= $this->Form->control('email', ['label' => false, 'required' => true, 'class' => 'input',
+            'placeholder' => 'votre@email.com']) ?>
 
-        <h3>Etape 2 : votre situation</h3>
 
-            <?= $this->Form->control('status', [
-                'type' => 'select',
-                'label' =>'Vous etes ?',
-                'options' => [
-                    'seul' => 'Seul(e)',
-                    'couple' => 'En couple',
-                    'famille' => 'En famille',
-                ],
-                'id' => 'options']) ?>
+    <label class="label">Mot de passe</label>
+        <?= $this->Form->control('password', ['label' => false, 'required' => true, 'class' => 'input',
+            'placeholder' => 'Mot de passe']) ?>
 
-            <div id="famille" style="display: none;">
-                <?= $this->Form->control('familySize',[
+
+    <label class="label">Âge</label>
+        <?= $this->Form->control('age', ['label' => false, 'required' => true, 'class' => 'input',
+            'placeholder' => 'Âge']) ?>
+
+        <button class="btn_next" onclick="etape2()" type="button">Suivant</button>
+    </section>
+
+    <section class="form" id="etape_2" style="display: none;">
+        <h3>étape 2 : Votre situation</h3>
+
+    <label class="label">Vous etes ?</label>
+        <?= $this->Form->control('status', [
+            'type' => 'select',
+            'label' =>false,
+            'options' => [
+                'seul' => 'Seul(e)',
+                'couple' => 'En couple',
+                'famille' => 'En famille',
+            ],
+            'id' => 'options',
+            'class' => 'input',
+            'placeholder' => 'situation'
+        ]) ?>
+
+        <div id="famille" style="display: none;">
+            <label class="label">Nombre de personne</label>
+            <?= $this->Form->control('familySize',[
                 'type' => 'number',
-                'label' =>'Combien de personne au total ?',
-                'min' => '3'
-                ]) ?>
-            </div>
+                'label' =>false,
+                'min' => '3',
+                'id' => 'familysize',
+                'class' => 'input',
+            'placeholder' => '3'
+            ]) ?>
+        </div>
 
-            <?= $this->Form->control('pmr',[
+    <label class="label">Je suis hendicapé (PMR)</label>
+        <?= $this->Form->control('pmr',[
             'type' => 'checkbox',
-            'label' => 'Je suis handicapé (PMR)'
-            ]
-            ) ?>
+            'label' => false
+        ]) ?>
 
-        <button class="btn_next" onclick="etape1()" type="button"><-</button>
-        <button class="btn_next" onclick="etape3()" type="button">-></button>
+        <div class="btn">
+            <button class="btn_next" onclick="etape1()" type="button">Retour</button>
+            <button class="btn_next" onclick="etape3()" type="button">Suivant</button>
+        </div>
+    </section>
 
-    </div>
+    <section class="form etape" id="etape_3" style="display: none;">
+    <h3>étape 3 : centres d'interets</h3>
 
-    <div class="form etape" id="etape_3" style="display: none;">
+    
+    <?= $this->Form->control('categories._id',[
+        'type' => 'select',
+        'multiple' => 'checkbox',
+        'options' => $categories,
+        'label' => false,
+            'placeholder' => 'Catégories'
+    ]) ?>
 
-        <h3>Etape 3: Centre d'interet</h3>
+    <button class="btn_next" onclick="etape1()" type="button">Retour</button>
+    <?= $this->Form->button('terminer', ['type' => 'submit', 'class' => 'btn_add']) ?>
 
-            <?= $this->Form->control('categories._ids',[
-                'type' => 'select',
-                'multiple' => 'checkbox',
-                'options' => $categories,
-                'label' => false
-            ]
-            ) ?>
+    </section>
 
-        <button class="btn_next" onclick="etape2()" type="button"><-</button>
+</section>
+    <?= $this->Form->end() ?>
+    <?= $this->Html->script('form') ?>
 
-        <?= $this->Form->button('terminer', ['type' => 'submit', 'class' => 'btn_submit']) ?>
-
-    </div>
-
-<?= $this->Form->end() ?>
-
-<?= $this->Html->script('form') ?>
-</div>
+</section>
