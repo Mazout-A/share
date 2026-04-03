@@ -41,7 +41,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
 </head>
 
-<body>
+<body class="page-<?= strtolower($this->request->getParam('action')) ?>">
 
     <main class="main">
         <div class="container">

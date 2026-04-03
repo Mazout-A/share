@@ -1,23 +1,34 @@
-<div class="users form content">
+<section class="login">
 
-    <?= $this->Flash->render() ?>
+    <div class="header">
+        <h3>Mon compte</h3>
+    </div>
 
-    <h3>Login</h3>
+    <div class="gap"></div>
 
-    <?= $this->Form->create() ?>
+    <div class="carte-login">
+        <h1 class="titre-login">Ravi de vous <br>revoir</h1>
 
-    <fieldset>
+        <?= $this->Form->create(null, 
+        ['class' => 'form-login']) ?>
+        <div class="input-login">
+            <label class="label">E-mail</label>
+            <?= $this->Form->control('email',[
+            'label' => false,
+            'placeholder' => 'votre@email.com',
+            'class' => 'input']) ?>
+        </div>
 
-        <legend><?= __('entre ton username et ton password') ?></legend>
+        <div class="input-login">
+            <label class="label">Mot de passe</label>
+            <?= $this->Form->control('password',[
+            'label' => false,
+            'placeholder' => '********',
+            'class' => 'input']) ?>
+            <a href="#" class="link-mdp">Mot de passe oublié</a>
+        </div>
+        <?= $this->Form->button('Se connecter', ['class' => 'button-primaire']) ?>
+        <?= $this->Form->end() ?>
+    </div>
 
-        <?= $this->Form->control('email', ['required' => true]) ?>
-
-        <?= $this->Form->control('password', ['required' => true]) ?>
-    </fieldset>
-
-    <?= $this->Form->button(__('Login')); ?>
-
-    <?= $this->Form->end() ?>
-
-    <?= $this->Html->link("Add User", ['action' => 'add']) ?>
-</div>
+</section>

@@ -1,3 +1,4 @@
+<section class="margin">
 <div class="index_activitis">
 
     <?php $identity = $this->request->getAttribute('identity'); ?>
@@ -95,3 +96,4 @@
         <?= $this->Paginator->last('Dernier >>') ?>
     </div>
 </div>
+</section>

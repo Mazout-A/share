@@ -11,8 +11,13 @@ class UsersController extends AppController
     {
         parent::beforeFilter($e);
         $this->Authentication->allowUnauthenticated(
-            ['login', 'add', 'view']
+            ['accueil', 'login', 'add']
         );
+    }
+
+    public function accueil()
+    {
+
     }
 
     // fonction index pour voir tous les users.
