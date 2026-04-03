@@ -1,40 +1,54 @@
-<div class="favorites index content">
-    <h2>Mes Activités Favorites</h2>
+<div class="favorites-view">
+    <!-- En-tête bleu -->
+    <div class="top-nav">
+        <h2 class="nav-title">Mes sauvegardes</h2>
+    </div>
 
-    <?php if (!$favorites->items()->isEmpty()): ?>
-        <div class="table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Activité</th>
-                        <th class="actions">Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($favorites as $favorite): ?>
-                        <tr>
-                            <!-- On vérifie si l'activité existe toujours pour éviter les erreurs -->
-                            <td>
-                                <?= $favorite->hasValue('activity') ? h($favorite->activity->title) : 'Activité indisponible' ?>
-                            </td>
-                            <td class="actions">
-                                <!-- Le lien "Voir" redirige directement vers l'Activity -->
-                                <?= $this->Html->link('Voir l\'activité', ['controller' => 'Activities', 'action' => 'view', $favorite->activity_id]) ?>
-                                
-                                <!-- Le lien pour supprimer le favori -->
-                                <?= $this->Form->postLink('Retirer', ['action' => 'delete', $favorite->id], ['confirm' => 'Es-tu sûr de vouloir retirer cette activité de tes favoris ?']) ?>
-                            </td>
-                        </tr>
-                    <?php endforeach; ?>
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="pagination">
-            <?= $this->Paginator->numbers() ?>
-        </div>
-        
-    <?php else: ?>
-        <p>Tu n'as aucune activité en favoris pour le moment.</p>
-    <?php endif; ?>
+    <!-- Filtres visuels (Radio buttons cachés pour simuler le choix unique) -->
+    <div class="filter-bar">
+        <input type="radio" name="filter" id="f-prochainement" checked>
+        <label for="f-prochainement">Prochainement</label>
+
+        <input type="radio" name="filter" id="f-sauvegardees">
+        <label for="f-sauvegardees">Sauvegardées</label>
+
+        <input type="radio" name="filter" id="f-passees">
+        <label for="f-passees">Passées</label>
+    </div>
+
+    <div class="margin">
+        <h3 class="section-subtitle">A venir</h3>
+
+        <?php if (!$favorites->items()->isEmpty()): ?>
+            <div class="cards-grid">
+                <?php foreach ($favorites as $favorite): ?>
+                    <?php if ($favorite->hasValue('activity')): ?>
+                        <div class="grid-card">
+                            <?= $this->Html->link(
+                                '<div class="image-placeholder"></div>' .
+                                '<div class="info-grid">' .
+                                    '<h3>' . h($favorite->activity->title) . '</h3>' .
+                                    '<p>' . h($favorite->activity->address ?? 'Localisation') . '</p>' .
+                                '</div>',
+                                ['controller' => 'Activities', 'action' => 'view', $favorite->activity_id],
+                                ['escape' => false, 'class' => 'card-link']
+                            ) ?>
+                            <!-- Petit bouton de suppression discret si besoin -->
+                            <?= $this->Form->postLink('<i class="fa fa-times"></i>', 
+                                ['action' => 'delete', $favorite->id], 
+                                ['escape' => false, 'class' => 'remove-fav', 'confirm' => 'Retirer des favoris ?']) 
+                            ?>
+                        </div>
+                    <?php endif; ?>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="pagination">
+                <?= $this->Paginator->numbers() ?>
+            </div>
+            
+        <?php else: ?>
+            <p class="empty-msg">Tu n'as aucune activité en favoris pour le moment.</p>
+        <?php endif; ?>
+    </div>
 </div>

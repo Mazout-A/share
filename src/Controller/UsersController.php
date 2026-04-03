@@ -15,10 +15,7 @@ class UsersController extends AppController
         );
     }
 
-    public function accueil()
-    {
-
-    }
+    public function accueil() {}
 
     // fonction index pour voir tous les users.
     public function index()
@@ -35,8 +32,10 @@ class UsersController extends AppController
 
         $id = $this->Authentication->getIdentity()->getIdentifier();
 
-        $user = $this->Users->get($id, 
-            contain: ['Categories']);
+        $user = $this->Users->get(
+            $id,
+            contain: ['Categories']
+        );
         $this->set(compact('user'));
     }
 
@@ -44,7 +43,7 @@ class UsersController extends AppController
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
-
+            $characters = $this->Movies->Characters->find('list')->order('name');
         if ($this->request->is('post')) {
 
             $user = $this->Users->patchEntity($user, $this->request->getData(), ['associated' => ['Categories']]);
@@ -57,12 +56,8 @@ class UsersController extends AppController
             $this->Flash->error('Votre compte n\'a pas était creer');
         }
 
-        $categories = $this->Users->Categories->find('list', 
-            keyField: 'id', 
-            valueField: 'name'
-        )->all();
 
-        $this->set(compact('user', 'categories'));
+        $this->set(compact('user'));
     }
 
     // fonction qui permet de modifier les données d'un compte

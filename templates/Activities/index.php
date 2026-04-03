@@ -7,7 +7,7 @@
             <?php if (!empty($identity->photo_url)): ?>
                 <?= $this->Html->image($identity->photo_url, ['alt' => 'Photo de profil', 'class' => 'profile-pic']) ?>
             <?php endif; ?>
-            <h2>Bonjour <?= h($identity->name) ?> <?= h($identity->surname) ?></h2>
+            <h2>Hey <?= h($identity->name) ?> <?= h($identity->surname) ?></h2>
         </div>
     <?php endif; ?>
 
@@ -33,7 +33,7 @@
                 <?php foreach ($groupe1 as $activity): ?>
                     <a href="<?= $this->Url->build(['action' => 'view', $activity->id]) ?>" class="activity-card">
                         <h3><?= h($activity->title) ?></h3>
-                        <p>Date : <?= $activity->start ? h($activity->start->format('d/m/Y à H:i')) : 'À venir' ?></p>
+                        <p>paris</p>
                     </a>
                 <?php endforeach; ?>
             </div>
@@ -78,7 +78,6 @@
                     '<div class="image-placeholder"></div>' .
                     '<div class="info-grid">' .
                         '<h3>' . h($activity->title) . '</h3>' .
-                        '<p>Localisation</p>' .
                     '</div>',
                     ['action' => 'view', $activity->id],
                     ['escape' => false, 'class' => 'grid-card-link']

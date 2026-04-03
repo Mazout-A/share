@@ -44,7 +44,22 @@ body {
     margin: 20px;
 }
 
+.user-welcome{
+    padding: 15px;
+    background-color: var(--accent);
+    color: var(--textlight);
+
+}
+
 /* ----------------------Styles pour le carrousel d'activités -----------------------------------------------------------------------------------*/
+.activites-groupe-1 {
+    margin-top: 20px;
+}
+.activites-groupe-1 h2 {
+    color: var(--nav);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
 .carousel {
     display: flex;
     overflow-x: scroll;
@@ -235,4 +250,474 @@ body {
     margin: 2px 0;
     font-size: 0.8rem;
     opacity: 0.7;
+}
+
+/* ----------------Activités------------------ */
+
+/* Navigation du haut */
+.top-nav {
+    background-color: var(--nav);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.back-btn {
+    color: var(--textlight);
+    background: rgba(255,255,255,0.1);
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+}
+
+.share-btn {
+    background: var(--textlight);
+    color: var(--nav);
+    border: none;
+    padding: 5px 15px;
+    border-radius: var(--radius);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Header Image et Titre */
+.header-section {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.image-wrapper {
+    position: relative;
+    flex: 0 0 140px;
+}
+
+.main-image-placeholder {
+    width: 140px;
+    height: 140px;
+    background-color: #eee;
+    border-radius: var(--radius);
+    background-image: linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd), 
+                      linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd);
+    background-size: 20px 20px;
+}
+
+.fav-container {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.fav-link {
+    background: var(--nav);
+    color: white;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.fav-link.active { color: var(--accent2); }
+
+.title-block h1 {
+    font-size: 1.4rem;
+    color: var(--nav);
+    margin-bottom: 5px;
+}
+
+.address {
+    font-size: 0.8rem;
+    color: var(--nav);
+    margin-bottom: 10px;
+    opacity: 0.8;
+}
+
+.category-badge {
+    background-color: var(--loisir); /* Tu peux l'adapter selon la catégorie */
+    color: var(--textdark);
+    padding: 4px 12px;
+    border-radius: var(--radius-max);
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+/* Sections d'informations */
+.info-section {
+    margin-bottom: 25px;
+}
+
+.info-section h2 {
+    color: var(--nav);
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+    font-size: 0.9rem;
+    color: var(--nav);
+}
+
+.info-row .val {
+    font-weight: bold;
+    text-align: right;
+}
+
+.info-row .val.url {
+    color: var(--textURL);
+}
+
+/* Horaires Card */
+.horaires-card {
+    background: rgba(255, 205, 195, 0.2); /* var(--accent2) avec opacité */
+    padding: 15px;
+    border-radius: var(--radius);
+    border: 1px solid var(--accent2);
+}
+
+.horaires-card .info-row {
+    border-bottom: 1px solid rgba(16, 45, 120, 0.05);
+}
+
+/* ----------------profil------------------ */
+/* Navigation Profil */
+.nav-title {
+    color: var(--textlight);
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+.edit-btn-top {
+    background: var(--textlight);
+    color: var(--nav);
+    text-decoration: none;
+    padding: 5px 15px;
+    border-radius: var(--radius);
+    font-weight: bold;
+    font-size: 0.8rem;
+}
+
+/* Identité et Badges */
+.profile-view .header-section {
+    align-items: center;
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: var(--radius);
+}
+
+.interests-badges {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.interests-badges .badge {
+    padding: 4px 15px;
+    border-radius: var(--radius);
+    font-weight: bold;
+    font-size: 0.8rem;
+    color: var(--nav); /* Le texte sur les badges jaune/vert est souvent foncé */
+}
+
+/* Lignes d'informations */
+.profile-view .info-section h2 {
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.profile-view .info-row {
+    padding: 4px 0;
+}
+
+.profile-view .info-row span:first-child {
+    color: var(--nav);
+    opacity: 0.8;
+}
+
+.profile-view .info-row .val {
+    color: var(--nav);
+    font-weight: 700;
+}
+
+.profile-view .info-row .val.url {
+    color: var(--nav);
+    text-decoration: none;
+}
+
+/* Footer Action */
+.action-footer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.logout-link {
+    color: var(--textURL);
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+/* -------------------modifiication Profil------------------ */
+
+/* Style spécifique à la page Edit */
+.edit-form .top-nav {
+    margin-bottom: 20px;
+}
+
+.save-btn-top {
+    background: var(--textlight);
+    color: var(--nav);
+    border: none;
+    padding: 5px 15px;
+    border-radius: var(--radius);
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+}
+
+/* Grille de formulaire */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.form-section h2 {
+    color: var(--nav);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+/* Style des Inputs CakePHP */
+.edit-form .input {
+    display: flex;
+    flex-direction: column;
+}
+
+.edit-form label {
+    color: var(--nav);
+    font-size: 0.85rem;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.edit-form input, 
+.edit-form select {
+    background-color: var(--accent2);
+    border: none;
+    border-radius: var(--radius);
+    padding: 10px;
+    color: var(--nav);
+    font-size: 0.9rem;
+    height: 40px;
+    box-sizing: border-box;
+    opacity: 0.8;
+}
+
+/* Placeholder couleur */
+.edit-form input::placeholder {
+    color: var(--nav);
+    opacity: 0.5;
+}
+
+/* Badges de sélection (Interêts) */
+.interests-selection {
+    grid-column: 2;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-content: center;
+}
+
+.badge-input {
+    padding: 5px 12px;
+    border-radius: var(--radius-max);
+    font-size: 0.85rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--nav);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: var(--nav);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.badge-input.loisir { background: var(--loisir); }
+.badge-input.sport { background: var(--sport); }
+.badge-input.culture { background: var(--culture); color: white; }
+.badge-input.culture .dot { background: white; }
+
+/* Champ Age spécifique avec "ans" */
+.age-input {
+    position: relative;
+}
+
+.age-input .unit {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    color: var(--nav);
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+/* Bouton principal en bas */
+.form-actions {
+    margin-top: 30px;
+    padding-bottom: 40px;
+}
+
+.save-btn-main {
+    width: 100%;
+    background-color: var(--nav);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: var(--radius);
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* -------------------favoris----------------- */
+
+
+/* --- Header & Subtitle --- */
+.favorites-view .top-nav {
+    background-color: var(--nav);
+    padding: 20px;
+    text-align: left;
+}
+
+.nav-title {
+    color: var(--textlight);
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+.section-subtitle {
+    color: var(--nav);
+    font-size: 1.4rem;
+    margin: 20px 0;
+    font-weight: 700;
+}
+
+/* --- Filtres (Pastilles) --- */
+.filter-bar {
+    display: flex;
+    gap: 10px;
+    padding: 15px 20px;
+    background-color: var(--bg);
+}
+
+/* On cache les boutons radio */
+.filter-bar input[type="radio"] {
+    display: none;
+}
+
+/* Style des labels (les pastilles) */
+.filter-bar label {
+    padding: 6px 15px;
+    border-radius: var(--radius-max);
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid var(--nav);
+    color: var(--nav);
+    background: transparent;
+    transition: all 0.3s ease;
+}
+
+/* Style quand une pastille est "cochée" */
+.filter-bar input[type="radio"]:checked + label {
+    background-color: var(--nav);
+    color: var(--textlight);
+}
+
+/* --- Grille de cartes --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 colonnes comme sur la maquette */
+    gap: 20px;
+}
+
+.grid-card {
+    position: relative;
+}
+
+.card-link {
+    text-decoration: none;
+    color: var(--textdark);
+    display: block;
+}
+
+.image-placeholder {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    background-color: #eee;
+    border-radius: var(--radius);
+    background-image: linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd), 
+                      linear-gradient(45deg, #ddd 25%, transparent 25%, transparent 75%, #ddd 75%, #ddd);
+    background-size: 20px 20px;
+    margin-bottom: 8px;
+}
+
+.info-grid h3 {
+    font-size: 0.95rem;
+    margin: 5px 0;
+    text-align: center;
+    color: var(--textdark);
+}
+
+.info-grid p {
+    font-size: 0.8rem;
+    text-align: center;
+    color: #666;
+    margin: 0;
+}
+
+/* Optionnel : Petit bouton de suppression en haut à droite de la carte */
+.remove-fav {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--textURL);
+    font-size: 0.7rem;
+    text-decoration: none;
+}
+
+.empty-msg {
+    text-align: center;
+    padding: 40px;
+    color: var(--nav);
+    opacity: 0.6;
 }
