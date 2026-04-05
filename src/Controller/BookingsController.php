@@ -40,7 +40,7 @@ class BookingsController extends AppController
 
     {
         $booking = $this->Bookings->newEmptyEntity();
-
+            $activities = $this->Bookings->Activites->find('list')->orderBy('name');
         if ($this->request->is('post')) {
 
             $booking = $this->Bookings->patchEntity(
@@ -56,10 +56,6 @@ class BookingsController extends AppController
                 }
                 $this->Flash->error('Votre réservation n\'a pas etait prise en compte');
         }
-        $activities = $this->Bookings->Activities->find('list',[
-            'keyField' => 'id',
-            'valuesField' => 'title'
-        ])->all();
         $this->set(compact('booking', 'activities'));
     }
 
